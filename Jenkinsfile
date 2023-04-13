@@ -9,8 +9,8 @@ pipeline {
             steps {
                 script{
                     echo 'building the application'
-                    sh "docker build -t dhyans/exam:examimage ."
-                    sh "docker run -it -d -p 3000:3000 dhyans/exam:examimage"
+                    sh "docker build -t 20it088/exam:examimage ."
+                    sh "docker run -it -d -p 3000:3000 20it088/exam:examimage"
 
                 }
             }
@@ -21,7 +21,7 @@ pipeline {
 //                message "Select the environment to deploy"
 //                ok "done"
 //                parameters{
-//                    choice(name: 'Type', choices:['Dev','Test','Deploy'], description: '')
+//                    choice(name: 'Type', choices:['Build','Test','Deploy'], description: '')
 //                }
 //
 //            }
@@ -29,7 +29,7 @@ pipeline {
                 script{echo 'deploying the application'
                     withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                         sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
-                        sh "docker push dhyans/exam:examimage"
+                        sh "docker push 20it088/exam:examimage"
                     }}
 
             }
